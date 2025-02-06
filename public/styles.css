@@ -63,7 +63,7 @@ input, select, textarea {
     padding: 12px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    font-size: 24px;
+    font-size: 16px;
     background-color: #222; /* Darker input fields */
     color: var(--text-color);
 }
@@ -82,7 +82,7 @@ button {
     border: none;
     border-radius: 6px;
     padding: 12px;
-    font-size: 20px;
+    font-size: 16px;
     transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
@@ -133,7 +133,7 @@ tr:nth-child(even) {
 
 .delete-container input {
     padding: 10px;
-    font-size: 20px;
+    font-size: 14px;
     width: 500px;
     border: 1px solid #555;
     border-radius: 4px;
@@ -164,7 +164,7 @@ tr:nth-child(even) {
 
 .cost-container h3 {
     margin: 0;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #e0e0e0;
 }
