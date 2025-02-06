@@ -1,3 +1,8 @@
+const API_BASE_URL =
+  process.env.APP_ENV === "prod"
+    ? "https://tiffinwise.onrender.com" // Render URL
+    : "http://localhost:5000"; // Local Development
+
 document.getElementById("tiffin-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -18,8 +23,7 @@ document.getElementById("tiffin-form").addEventListener("submit", async (e) => {
     deliveryCharge: 30,
   };
 
-
-  await fetch("http://localhost:5000/api/tiffins", {
+  await fetch(`${API_BASE_URL}/api/tiffins`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(tiffinData),
@@ -32,7 +36,7 @@ document.getElementById("tiffin-form").addEventListener("submit", async (e) => {
 
 function initForm() {
   const dateInput = document.getElementById("date");
-//   const typeSelect = document.getElementById("type");
+  //   const typeSelect = document.getElementById("type");
   const numberOfTiffinsInput = document.getElementById("numberOfTiffins");
   const countOfExtrasInput = document.getElementById("countOfExtras");
 
@@ -40,12 +44,10 @@ function initForm() {
   dateInput.value = new Date().toISOString().split("T")[0];
 
   // Set default values
-//   typeSelect.value = "Dinner";
+  //   typeSelect.value = "Dinner";
   numberOfTiffinsInput.value = 0;
   countOfExtrasInput.value = 0;
-};
-
-
+}
 
 // Set extras cost based on selection
 document.getElementById("extrasType").addEventListener("change", function () {
@@ -58,11 +60,9 @@ document.getElementById("extrasType").addEventListener("change", function () {
   else costInput.value = "";
 });
 
-
-
 // OLD ---------------------------------------------------------------------------------------
 // async function loadHistory() {
-//   const response = await fetch("http://localhost:5000/api/tiffins");
+//   const response = await fetch(`${API_BASE_URL}/api/tiffins`);
 //   const tiffins = await response.json();
 
 //   let historyHtml =
@@ -129,7 +129,7 @@ document.getElementById("extrasType").addEventListener("change", function () {
 // ------------------------------------------------------------------------------------
 
 async function loadHistory() {
-  const response = await fetch("http://localhost:5000/api/tiffins");
+  const response = await fetch(`${API_BASE_URL}/api/tiffins`);
 
   const tiffins = await response.json();
 
@@ -177,16 +177,15 @@ async function loadHistory() {
     groupedData[key].entries.push(t);
     groupedData[key].deliveryCost = t.deliveryCharge;
     t.tiffers.forEach((p) => groupedData[key].allUniqueParticipants.add(p));
-    t.extraTiffers.forEach((p) => groupedData[key].allUniqueParticipants.add(p));
-
+    t.extraTiffers.forEach((p) =>
+      groupedData[key].allUniqueParticipants.add(p)
+    );
   });
 
   Object.values(groupedData).forEach((group) => {
-
     overAllTotalCost +=
       group.reduce((sum, entry) => sum + entry.totalCost, 0) +
       group.deliveryCost;
-
 
     let individualGroupCost = {};
 
@@ -204,7 +203,6 @@ async function loadHistory() {
               (entry.totalExtrasCost / entry.extraParticipants.size).toFixed(2)
             )
           : 0;
-
 
       entry.tiffinParticipants.forEach((p) => {
         if (!individualGroupCost[p]) individualGroupCost[p] = 0;
@@ -241,7 +239,6 @@ async function loadHistory() {
       individualCost[p] += individialDeliveryCost;
     });
 
-
     historyHtml += `<tr>
         <td>${group.map((t) => t.id).join("<br><br>")}</td>
       <td>${group.map((t, index) => (index === 0 ? t.date : "")).join("")}</td>
@@ -275,7 +272,6 @@ async function loadHistory() {
   )
     .map(([key, value]) => `${key}: ${value}`)
     .join("<br>");
-
 }
 
 document.getElementById("delete-button").addEventListener("click", async () => {
@@ -288,7 +284,7 @@ document.getElementById("delete-button").addEventListener("click", async () => {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/tiffins/${deleteId}`,
+      `${API_BASE_URL}/api/tiffins/${deleteId}`,
       {
         method: "DELETE",
       }
@@ -312,7 +308,7 @@ document.getElementById("delete-button").addEventListener("click", async () => {
 
 // OLD ------------------------------------------------------------------------------------
 // async function loadExpense() {
-//   const response = await fetch("http://localhost:5000/api/tiffins");
+//   const response = await fetch(`${API_BASE_URL}/api/tiffins`);
 //   const tiffins = await response.json();
 
 //   const groupedData = {};
@@ -410,12 +406,11 @@ document.getElementById("delete-button").addEventListener("click", async () => {
 // }
 // OLD ------------------------------------------------------------------------------------
 
-
 // OLD ------------------------------------------------------------------------------------
 // document.getElementById("delete-all").addEventListener("click", async () => {
 //   if (!confirm("Are you sure you want to delete all entries?")) return;
 
-//   const response = await fetch("http://localhost:5000/api/tiffins/all", {
+//   const response = await fetch(`${API_BASE_URL}/api/tiffins/all`, {
 //     method: "DELETE",
 //   });
 
@@ -427,8 +422,6 @@ document.getElementById("delete-button").addEventListener("click", async () => {
 //     alert("Failed to delete all entries.");
 //   }
 // });
-
-
 
 // let currentTab = "history"; // Default tab
 
