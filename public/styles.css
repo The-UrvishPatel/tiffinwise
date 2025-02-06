@@ -1,0 +1,206 @@
+/* Dark Theme Colors */
+:root {
+    --primary-color: #005c99;
+    --secondary-color: #009dbc;
+    --background-color: #121212; /* Dark background */
+    --text-color: #e0e0e0; /* Light text */
+    --card-bg: #1e1e1e; /* Darker card background */
+    --border-color: #333333; /* Dark border */
+    --hover-color: #005c99;
+}
+
+/* Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container Styling */
+.container {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    /* box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); */
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    margin: 40px;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+h3 {
+    color: var(--secondary-color);
+    margin: 20px 0 10px;
+    font-size: 22px;
+}
+
+/* Form Styling */
+form {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 24px;
+    background-color: #222; /* Darker input fields */
+    color: var(--text-color);
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Button Styles */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 20px;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+#delete-all {
+    background-color: #d62828;
+}
+
+#delete-all:hover {
+    background-color: #b71c1c;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: var(--card-bg);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(0, 180, 216, 0.1);
+}
+
+/* Delete Container */
+.delete-container {
+    display: flex;  
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.delete-container input {
+    padding: 10px;
+    font-size: 20px;
+    width: 500px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #222;
+    color: var(--text-color);
+}
+
+.delete-container button {
+    background-color: #d62828;
+}
+
+.delete-container button:hover {
+    background-color: #b71c1c;
+}
+
+/* Cost Container */
+.cost-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222; /* Dark background */
+    padding: 15px 20px;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); */
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.cost-container h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.cost-container h3#totalCost,
+.cost-container h3#individualCost {
+    color: #00b4d8; /* Modern blue color */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    input, select, textarea, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiffin Bill Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Tiffin Bill Manager</h1>
+        <form id="tiffin-form">
+            <input type="date" id="date"  required>
+            <input type="text" id="tiffers" placeholder="Participants (e.g., UKRDN)" required>
+            <select id="type" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Lunch">Lunch</option>
+            </select>
+            <input type="number" id="numberOfTiffins" placeholder="Number of Tiffins" required min="0" required>
+            <input type="number" id="costOfTiffin" placeholder="Cost of Tiffin" required min="0" required>
+            <select id="extrasType">
+                <option value="" disabled selected>Select an option</option>
+                <option value="Roti">Roti</option>
+                <option value="Paratha">Paratha</option>
+                <option value="Bun">Bun</option>
+            </select>
+            <input type="number" id="countOfExtras" placeholder="Count of Extras" min="0">
+            <input type="number" id="costOfExtra" placeholder="Cost of Extra" min="0">
+            <input type="text" id="extraTiffers" placeholder="Extras Participants (e.g., UKR)">
+            <input type="number" id="deliveryCharge" placeholder="Delivery Charge" value="30">
+            <textarea id="description" placeholder="Description"></textarea>
+            <button type="submit">Add Tiffin</button>
+        </form>
+
+        <!-- Container div for input field and delete button -->
+        <div class="delete-container">
+            <!-- Input field for entering MongoDB _id -->
+            <input type="text" id="delete-id" placeholder="Enter _id to delete" />
+        
+            <!-- Delete button -->
+            <button id="delete-button">Delete Entry</button>
+        </div>
+        
+        <!-- <button id="delete-all">Delete All Entries</button> -->
+        <!-- <button id="showtab" onclick="toggleTab()">Show Expense</button> -->
+
+        <div class="cost-container">
+            <h3>Total Cost:</h3>
+            <h3 id="totalCost">₹0</h3>
+        </div>
+        
+        <div class="cost-container">
+            <h3>Individual Cost:</h3>
+            <h3 id="individualCost">₹0</h3>
+        </div>
+
+        <h3>History</h3>
+        <div id="history"></div>
+
+        <!-- <h2>Expense</h2>
+        <div id="expense"></div> -->
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
