@@ -17,7 +17,7 @@ app.use(express.static("public"));
 // MongoDB Connection
 const mongoURI = process.env.MONGO_URI;
 mongoose
-  .connect(mongoURI, { useUnifiedTopology: true })
+  .connect(mongoURI)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
