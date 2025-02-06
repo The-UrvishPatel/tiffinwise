@@ -1,7 +1,9 @@
-const API_BASE_URL =
-  process.env.APP_ENV === "prod"
-    ? "https://tiffinwise.onrender.com" // Render URL
-    : "http://localhost:5000"; // Local Development
+// const API_BASE_URL =
+//   process.env.APP_ENV === "prod"
+//     ? "https://tiffinwise.onrender.com" // Render URL
+//     : "http://localhost:5000"; // Local Development
+
+const API_BASE_URL = "https://tiffinwise.onrender.com";
 
 document.getElementById("tiffin-form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -283,12 +285,9 @@ document.getElementById("delete-button").addEventListener("click", async () => {
   }
 
   try {
-    const response = await fetch(
-      `${API_BASE_URL}/api/tiffins/${deleteId}`,
-      {
-        method: "DELETE",
-      }
-    );
+    const response = await fetch(`${API_BASE_URL}/api/tiffins/${deleteId}`, {
+      method: "DELETE",
+    });
 
     if (response.ok) {
       alert("Entry deleted successfully!");
