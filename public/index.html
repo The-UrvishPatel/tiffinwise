@@ -12,28 +12,74 @@
     <div class="container">
         <h1>Tiffin Bill Manager</h1>
         <form id="tiffin-form">
-            <input type="date" id="date"  required>
-            <input type="text" id="tiffers" placeholder="Participants (e.g., UKRDN)" required>
-            <select id="type" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="Dinner">Dinner</option>
-                <option value="Lunch">Lunch</option>
-            </select>
-            <input type="number" id="numberOfTiffins" placeholder="Number of Tiffins" required min="0" required>
-            <input type="number" id="costOfTiffin" placeholder="Cost of Tiffin" required min="0" required>
-            <select id="extrasType">
-                <option value="" disabled selected>Select an option</option>
-                <option value="Roti">Roti</option>
-                <option value="Paratha">Paratha</option>
-                <option value="Bun">Bun</option>
-            </select>
-            <input type="number" id="countOfExtras" placeholder="Count of Extras" min="0">
-            <input type="number" id="costOfExtra" placeholder="Cost of Extra" min="0">
-            <input type="text" id="extraTiffers" placeholder="Extras Participants (e.g., UKR)">
-            <input type="number" id="deliveryCharge" placeholder="Delivery Charge" value="30">
-            <textarea id="description" placeholder="Description"></textarea>
+            <div class="form-group">
+                <label for="date">Select Date:</label>
+                <input type="date" id="date" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="tiffers">Participants (e.g., UKRDN):</label>
+                <input type="text" id="tiffers" placeholder="Enter participants" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="type">Meal Type:</label>
+                <select id="type" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Lunch">Lunch</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label for="numberOfTiffins">Number of Tiffins:</label>
+                <input type="number" id="numberOfTiffins" placeholder="Enter quantity" required min="0">
+            </div>
+        
+            <div class="form-group">
+                <label for="costOfTiffin">Cost of Tiffin:</label>
+                <input type="number" id="costOfTiffin" placeholder="Enter cost" required min="0">
+            </div>
+        
+            <div class="form-group">
+                <label for="extrasType">Extra Item Type:</label>
+                <select id="extrasType">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Roti">Roti</option>
+                    <option value="Paratha">Paratha</option>
+                    <option value="Bun">Bun</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label for="countOfExtras">Count of Extras:</label>
+                <input type="number" id="countOfExtras" placeholder="Enter count" min="0">
+            </div>
+        
+            <div class="form-group">
+                <label for="costOfExtra">Cost of Extras:</label>
+                <input type="number" id="costOfExtra" placeholder="Enter cost" min="0">
+            </div>
+        
+            <div class="form-group">
+                <label for="extraTiffers">Extras Participants (e.g., UKR):</label>
+                <input type="text" id="extraTiffers" placeholder="Enter extra participants">
+            </div>
+        
+            <div class="form-group">
+                <label for="deliveryCharge">Delivery Charge:</label>
+                <input type="number" id="deliveryCharge" placeholder="Enter delivery charge" value="30">
+            </div>
+        
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" placeholder="Enter additional details"></textarea>
+            </div>
+        
             <button type="submit">Add Tiffin</button>
         </form>
+
+
 
         <!-- Container div for input field and delete button -->
         <div class="delete-container">
