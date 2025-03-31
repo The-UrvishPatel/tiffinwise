@@ -3,7 +3,7 @@
 //     ? "https://tiffinwise.onrender.com" // Render URL
 //     : "http://localhost:5000"; // Local Development
 
-const API_BASE_URL = "https://tiffinwise.onrender.com";
+const API_BASE_URL = "http://localhost:5000";
 
 document.getElementById("tiffin-form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -304,6 +304,45 @@ document.getElementById("delete-button").addEventListener("click", async () => {
   loadHistory();
   initForm();
 });
+
+document.getElementById("delete-button-date").addEventListener("click", async () => {
+  const startDate = document.getElementById("date-1").value;
+  const endDate = document.getElementById("date-2").value;
+
+  if (!startDate || !endDate) {
+    alert("Please enter valid Start and End dates.");
+    return;
+  }
+
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/tiffins`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        startDate: startDate.trim(),  // Ensure proper format
+        endDate: endDate.trim(),
+      }),
+    });
+
+    if (response.ok) {
+      alert("Entries deleted successfully!");
+      loadHistory(); // Refresh the table after deletion
+      initForm();
+    } else {
+      const errorMessage = await response.text();
+      alert(`Error deleting entries: ${errorMessage}`);
+    }
+  } catch (error) {
+    alert("An error occurred while deleting the entries.");
+    console.error(error);
+  }
+
+  loadHistory();
+  initForm();
+});
+
+
 
 // OLD ------------------------------------------------------------------------------------
 // async function loadExpense() {
