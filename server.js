@@ -74,6 +74,36 @@ app.delete("/api/tiffins/:id", async (req, res) => {
   }
 });
 
+app.delete("/api/tiffins", async (req, res) => {
+  try {
+    const { startDate, endDate } = req.body;
+
+    // Validate input
+    if (!startDate || !endDate) {
+      return res.status(400).json({ error: "Start date and end date are required." });
+    }
+
+    // Ensure correct date format (YYYY-MM-DD)
+    const formattedStartDate = startDate.trim();
+    const formattedEndDate = endDate.trim();
+
+    console.log("Formatted Start Date:", formattedStartDate);
+    console.log("Formatted End Date:", formattedEndDate);
+    // Delete tiffins within the date range
+    const result = await Tiffin.deleteMany({
+      date: { $gte: formattedStartDate, $lte: formattedEndDate }
+    });
+
+    res.json({
+      message: "Tiffin entries deleted successfully within the date range",
+      deletedCount: result.deletedCount,
+    });
+  } catch (error) {
+    console.error("Error deleting tiffins:", error);
+    res.status(500).json({ error: "Failed to delete tiffin entries by date" });
+  }
+});
+
 // app.put("/api/tiffins/:id", async (req, res) => {
 //   try {
 //     const updatedTiffin = await Tiffin.findByIdAndUpdate(
